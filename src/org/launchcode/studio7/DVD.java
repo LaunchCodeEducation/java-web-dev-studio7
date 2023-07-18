@@ -1,29 +1,30 @@
 package org.launchcode.studio7;
 
-public class DVD extends BaseDisc implements OpticalDisc {
-    public DVD(int totalCapacity, String name) {
-        super(totalCapacity, name);
+public class DVD extends ComputerDisc implements OpticalDisc {
+    public DVD( String tittle) {
+        super(4000, 1600, tittle);
     }
+
 
     @Override
     public void spinDisc() {
-
+        System.out.println("A DVD spins at a rate of: " + this.getSpinSpeed() + "rpm");
     }
 
     @Override
-    public void ejectDisc() {
-
+    public void storeData(String data) {
+  this.writeData(data);
     }
 
     @Override
-    public void getMetaData() {
-
+    public boolean isFull() {
+        if(this.readData().length() >= this.getStorageCapacity() ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    @Override
-    public void play() {
-
-    }
 
     // TODO: Implement your custom interface.
 
